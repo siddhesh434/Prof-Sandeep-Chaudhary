@@ -1,0 +1,263 @@
+<%- include('partials/header') %>
+<link rel="stylesheet" href="projects.css" />
+
+<!-- Main Content -->
+<div class="main-wrapper">
+  <div class="container">
+    <div class="page-title">
+      <h1>Projects</h1>
+      <p class="subtitle">Research projects and collaborations</p>
+    </div>
+
+    <div class="profile-links">
+      <a href="#" target="_blank"
+        ><i class="fab fa-researchgate"></i> ResearchGate</a
+      >
+      <a href="#" target="_blank"
+        ><i class="fab fa-google"></i> Google Scholar</a
+      >
+    </div>
+
+    <!-- Project Summary -->
+    <div class="project-summary">
+      <div class="summary-card">
+        <div class="summary-number" id="total-projects">
+          <%= projects.length %>
+        </div>
+        <div class="summary-title">Total Projects</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-number" id="sponsored-count">0</div>
+        <div class="summary-title">Sponsored Research Projects</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-number" id="institute-count">0</div>
+        <div class="summary-title">Institute Level Projects</div>
+      </div>
+      <div class="summary-card" style="display: none">
+        <div class="summary-number" id="consultancy-count">0</div>
+        <div class="summary-title">Consultancy Projects</div>
+      </div>
+    </div>
+
+    <!-- Sponsored Research Projects Section -->
+    <div class="project-section">
+      <div class="section-title">
+        <h2>Sponsored Research Projects</h2>
+      </div>
+
+      <!-- Search and Display Controls -->
+      <div class="table-controls">
+        <div class="entries-selector">
+          <label for="entries-select-sponsored">Show</label>
+          <select id="entries-select-sponsored" class="entries-select">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+          <span>entries</span>
+        </div>
+        <div class="search-container">
+          <input
+            type="text"
+            id="sponsored-search"
+            placeholder="Search projects..."
+            class="search-input"
+          />
+          <button id="search-btn-sponsored" class="search-button">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="project-table" id="sponsored-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Year</th>
+              <th>Funded</th>
+              <th>Collaborator</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody id="sponsored-body">
+            <% projects.filter(project=> project.projectType === "Sponsored "+
+            "Research " +"Project").forEach((project, index) => { %>
+            <tr class="sponsored-row" data-index="<%= index %>">
+              <td><%= project.title %></td>
+              <td><%= project.year %></td>
+              <td><%= project.funded %></td>
+              <td><%= project.collaborator %></td>
+              <td><%= project.role %></td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination-container">
+        <div class="pagination-info">
+          Showing <span id="showing-start-sponsored">1</span> to
+          <span id="showing-end-sponsored">5</span> of
+          <span id="total-entries-sponsored">0</span> entries
+        </div>
+        <div class="pagination-controls" id="pagination-controls-sponsored">
+          <!-- Pagination buttons will be dynamically generated -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Institute Level Projects Section -->
+    <div class="project-section">
+      <div class="section-title">
+        <h2>Institute Level Projects</h2>
+      </div>
+
+      <!-- Search and Display Controls -->
+      <div class="table-controls">
+        <div class="entries-selector">
+          <label for="entries-select-institute">Show</label>
+          <select id="entries-select-institute" class="entries-select">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+          <span>entries</span>
+        </div>
+        <div class="search-container">
+          <input
+            type="text"
+            id="institute-search"
+            placeholder="Search projects..."
+            class="search-input"
+          />
+          <button id="search-btn-institute" class="search-button">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="project-table" id="institute-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Year</th>
+              <th>Funded</th>
+              <th>Collaborator</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody id="institute-body">
+            <% projects.filter(project=> project.projectType === "Institute " +
+            "Level " + "Project").forEach((project, index) => { %>
+            <tr class="institute-row" data-index="<%= index %>">
+              <td><%= project.title %></td>
+              <td><%= project.year %></td>
+              <td><%= project.funded %></td>
+              <td><%= project.collaborator %></td>
+              <td><%= project.role %></td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination-container">
+        <div class="pagination-info">
+          Showing <span id="showing-start-institute">1</span> to
+          <span id="showing-end-institute">5</span> of
+          <span id="total-entries-institute">0</span> entries
+        </div>
+        <div class="pagination-controls" id="pagination-controls-institute">
+          <!-- Pagination buttons will be dynamically generated -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Consultancy Projects Section -->
+    <div class="project-section">
+      <div class="section-title">
+        <h2>Consultancy Projects</h2>
+      </div>
+      <h3 style="color: yellow">
+        Handled more than 150 consultancy Projects as PI of amount more than INR
+        35 million.
+      </h3>
+      <h4 style="text-decoration: underline">Major Projects handled-</h4>
+      <!-- Search and Display Controls -->
+      <div class="table-controls">
+        <div class="entries-selector">
+          <label for="entries-select-consultancy">Show</label>
+          <select id="entries-select-consultancy" class="entries-select">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+          <span>entries</span>
+        </div>
+        <div class="search-container">
+          <input
+            type="text"
+            id="consultancy-search"
+            placeholder="Search projects..."
+            class="search-input"
+          />
+          <button id="search-btn-consultancy" class="search-button">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="project-table" id="consultancy-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Year</th>
+              <th>Funded</th>
+              <th>Collaborator</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody id="consultancy-body">
+            <% projects.filter(project=> project.projectType === "Consultancy" +
+            " Project").forEach((project, index) => { %>
+            <tr class="consultancy-row" data-index="<%= index %>">
+              <td><%= project.title %></td>
+              <td><%= project.year %></td>
+              <td><%= project.funded %></td>
+              <td><%= project.collaborator %></td>
+              <td><%= project.role %></td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination-container">
+        <div class="pagination-info">
+          Showing <span id="showing-start-consultancy">1</span> to
+          <span id="showing-end-consultancy">5</span> of
+          <span id="total-entries-consultancy">0</span> entries
+        </div>
+        <div class="pagination-controls" id="pagination-controls-consultancy">
+          <!-- Pagination buttons will be dynamically generated -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('partials/footer') %>
+
+<script src="projects.js"></script>

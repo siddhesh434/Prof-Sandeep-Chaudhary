@@ -1,0 +1,182 @@
+<%- include('partials/header') %>
+
+<link rel="stylesheet" href="patent.css" />
+<!-- Main Content -->
+<div class="main-wrapper">
+  <div class="container">
+    <div class="page-title">
+      <h1>Patents</h1>
+      <p class="subtitle">Innovative technologies and novel inventions</p>
+    </div>
+
+    <div class="profile-links">
+      <a href="#" target="_blank" style="pointer-events: none">
+        <i class="fas fa-flask"></i> Research Profile
+      </a>
+      <a href="#" target="_blank" style="pointer-events: none">
+        <i class="fas fa-lightbulb"></i> Innovation Portfolio
+      </a>
+    </div>
+
+    <!-- Patent Summary -->
+    <div class="patent-summary">
+      <div class="summary-card">
+        <div class="summary-number"><%= patents.length %></div>
+        <div class="summary-title">Total Patents</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-number">
+          <%= patents.filter(patent => patent.grantNumber).length %>
+        </div>
+        <div class="summary-title">Granted Patents</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-number">
+          <%= patents.filter(patent => !patent.grantNumber).length %>
+        </div>
+        <div class="summary-title">Patent Applications</div>
+      </div>
+      <div class="summary-card" style="display: none">
+        <div class="summary-number">
+          <%= [...new Set(patents.map(patent => patent.year))].length %>
+        </div>
+        <div class="summary-title">Years of Innovation</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-number">1</div>
+        <div class="summary-title">Technology Transfer</div>
+      </div>
+    </div>
+
+    <!-- Patents Section -->
+    <div class="patents-section">
+      <div class="section-title">
+        <h2>Patent Portfolio</h2>
+      </div>
+
+      <!-- Search and Display Controls -->
+      <div class="table-controls">
+        <div class="entries-selector">
+          <label for="entries-select-patents">Show</label>
+          <select id="entries-select-patents" class="entries-select">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+          <span>entries</span>
+        </div>
+        <div class="search-container">
+          <input
+            type="text"
+            id="patent-search"
+            placeholder="Search patents..."
+            class="search-input"
+          />
+          <button id="search-btn-patents" class="search-button">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="patent-table" id="patents-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Inventors</th>
+              <th>Year</th>
+              <th>Application No.</th>
+              <th>Patent No.</th>
+              <th>Grant Date</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody id="patents-body">
+            <% patents.forEach((patent, index) => { %>
+            <tr class="patent-row" data-index="<%= index %>">
+              <td><%= patent.title %></td>
+              <td><%= patent.authors %></td>
+              <td><%= patent.year %></td>
+              <td><%= patent.applicationNumber %></td>
+              <td>
+                <%= patent.grantNumber ? patent.grantNumber : "Pending" %>
+              </td>
+              <td><%= patent.grantDate ? patent.grantDate : "Pending" %></td>
+              <td>
+                <button class="view-details-btn" data-id="<%= index %>">
+                  <i class="fas fa-info-circle"></i> View
+                </button>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination-container">
+        <div class="pagination-info">
+          Showing <span id="showing-start-patents">1</span> to
+          <span id="showing-end-patents">10</span> of
+          <span id="total-entries-patents"><%= patents.length %></span> entries
+        </div>
+        <div class="pagination-controls" id="pagination-controls-patents">
+          <!-- Pagination buttons will be dynamically generated -->
+        </div>
+      </div>
+    </div>
+
+    <div class="patents-section">
+      <div class="section-title">
+        <h2>Technology Transfer</h2>
+      </div>
+      <div>
+        <h2 style="color: var(--text-color)">
+          Compressed coloured bi-layered bricks
+        </h2>
+
+        <p style="width: 90%">
+          Developed a novel compressed coloured bi-layer brick by upcycling of
+          dimensional stone processing waste as natural pigments. The novel
+          building product is an industry ready solution and offers three key
+          advantages – (i) environment friendly, safely disposes dimensional
+          stone processing waste which is a major concern in Rajasthan, (ii)
+          economical, costs lower than the conventional painted masonry wall,
+          and (iii) aesthetically pleasing, natural colouring provides an
+          appealing look to the product. The Technology has been successfully
+          transferred to M/s Abhishek bricks, Indore, M. P., India by Indian
+          Institute of Technology Indore with exclusive rights of manufacturing
+          and sale in Madhya Pradesh only for the period of 03 years w.e.f.
+          April 1, 2022, to March 31, 2025.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Patent Details Modal -->
+<div id="patent-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <h2 id="modal-title"></h2>
+    <div class="modal-info">
+      <p><strong>Inventors:</strong> <span id="modal-inventors"></span></p>
+      <p><strong>Year:</strong> <span id="modal-year"></span></p>
+      <p>
+        <strong>Application Number:</strong> <span id="modal-app-number"></span>
+      </p>
+      <p>
+        <strong>Patent Number:</strong> <span id="modal-patent-number"></span>
+      </p>
+      <p><strong>Grant Date:</strong> <span id="modal-grant-date"></span></p>
+    </div>
+    <div class="modal-description">
+      <h3>Description</h3>
+      <p id="modal-description"></p>
+    </div>
+  </div>
+</div>
+<%- include('partials/footer') %>
+<script src="patent.js"></script>

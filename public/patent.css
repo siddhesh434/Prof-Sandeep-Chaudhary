@@ -1,0 +1,407 @@
+:root {
+  /* Default is dark mode */
+  --primary-color: #5ab9a8;
+  --background-color: #20232a;
+  --text-color: #ffffff;
+  --secondary-bg: #292d36;
+  --footer-bg: #191c22;
+  --header-bg: #ffffff;
+  --header-text: #333333;
+  --card-bg: #292d36;
+  --border-color: #444;
+  }
+  
+  /* Light theme */
+  html[data-theme="light"] {
+  --primary-color: #33B38D;
+  --background-color: #f5f5f7;
+  --text-color: #333;
+  --secondary-bg: #ffffff;
+  --footer-bg: #e5e5e7;
+  --header-bg: #ffffff;
+  --header-text: #333333;
+  --card-bg: #ffffff;
+  --border-color: #ddd;
+  }
+/* Main Content Styles */
+
+.page-title {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  .page-title h1 {
+    font-size: 2.8rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    opacity: 0.8;
+  }
+  
+  .profile-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .profile-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .profile-links a:hover {
+    text-decoration: underline;
+    transform: translateY(-2px);
+  }
+  
+  /* Patent Summary */
+  .patent-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .summary-card {
+    flex: 1;
+    min-width: 250px;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .summary-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .summary-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+  }
+  
+  .summary-title {
+    font-size: 1.1rem;
+    color: var(--text-color);
+  }
+  
+  /* Patents Section */
+  .patents-section {
+    margin-bottom: 50px;
+  }
+  
+  .section-title {
+    margin-bottom: 20px;
+  }
+  
+  .section-title h2 {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    position: relative;
+    padding-bottom: 10px;
+  }
+  
+  .section-title h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+  }
+  
+  /* Table Controls */
+  .table-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .entries-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .entries-select {
+    padding: 6px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+  }
+  
+  .search-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-input {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px 0 0 5px;
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+    width: 250px;
+  }
+  
+  .search-button {
+    padding: 8px 12px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .search-button:hover {
+    background-color: var(--primary-color);
+    opacity: 0.9;
+  }
+  
+  /* Table Styles */
+  .table-wrapper {
+    overflow-x: auto;
+    margin-bottom: 20px;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  .patent-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+  }
+  
+  .patent-table thead {
+    background-color: var(--secondary-bg);
+  }
+  
+  .patent-table th {
+    padding: 15px 10px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid var(--border-color);
+  }
+  
+  .patent-table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+  }
+  
+  .patent-table tbody tr:hover {
+    background-color: var(--secondary-bg);
+  }
+  
+  .view-details-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+  }
+  
+  .view-details-btn:hover {
+    background-color: var(--primary-color);
+    opacity: 0.8;
+  }
+  
+  /* Pagination */
+  .pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pagination-info {
+    color: var(--text-color);
+    font-size: 0.9rem;
+  }
+  
+  .pagination-controls {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .pagination-controls button {
+    padding: 6px 12px;
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .pagination-controls button.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+  }
+  
+  .pagination-controls button:hover:not(.active) {
+    background-color: var(--primary-color);
+    color: white;
+    opacity: 0.7;
+  }
+  
+  /* Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    animation: fadeIn 0.3s;
+  }
+  
+  .modal-content {
+    background-color: var(--card-bg);
+    margin: 10% auto;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 70%;
+    max-width: 800px;
+    position: relative;
+    animation: slideIn 0.4s;
+  }
+  
+  .close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .close-modal:hover {
+    color: var(--primary-color);
+  }
+  
+  .modal-content h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .modal-info {
+    margin-bottom: 20px;
+  }
+  
+  .modal-info p {
+    margin-bottom: 10px;
+  }
+  
+  .modal-description h3 {
+    margin-bottom: 10px;
+    color: var(--text-color);
+  }
+  
+  .modal-description p {
+    line-height: 1.6;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 992px) {
+    .modal-content {
+      width: 80%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .summary-card {
+      min-width: calc(50% - 10px);
+    }
+    
+    .table-controls {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+    
+    .search-input {
+      width: 100%;
+    }
+    
+    .pagination-container {
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    
+    .modal-content {
+      width: 90%;
+      margin: 20% auto;
+      padding: 20px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .summary-card {
+      min-width: 100%;
+    }
+    
+    .profile-links {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
